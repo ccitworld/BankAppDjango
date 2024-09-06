@@ -1,0 +1,14 @@
+{% extends 'dashboard.html' %}
+{% load django_bootstrap5 %}
+
+{% block 'maincontainer' %}
+    <div class="w-75 border shadow-sm rounded mt-5 p-3 mx-auto">
+        <h3>New Account Form</h3>
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% bootstrap_form NewAccountForm %}
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+    </div>
+{% endblock %}

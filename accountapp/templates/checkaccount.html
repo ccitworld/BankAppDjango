@@ -1,0 +1,40 @@
+{% extends 'dashboard.html' %}
+{% load django_bootstrap5 %}
+{% block 'maincontainer' %}
+    <div class="mt-5 border rounded p-5 pt-3">
+        <h3 class="text-center">Check Account Balance</h3>
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+        <div class="row">
+            <div class="col-3 text-center fw-bold h5">Account No: </div>
+            <div class="col-6">
+                <select class="form-select" name="accno">
+                    {% for item in accountActiveList %}
+                        <option>{{item.accno}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col"><button type="submit" class="btn btn-primary w-75">Check</button></div>
+        </div>
+        </form>
+        {% if account %}
+        <div class="w-50 border mx-auto mt-3 p-3">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Account no:</th>
+                    <td>{{account.accno}}</td>
+                </tr>
+                <tr>
+                    <th>Account Type:</th>
+                    <td>{{account.account_type}}</td>
+                </tr>
+                <tr>
+                    <th>Balance:</th>
+                    <td class="fw-bold text-success">{{account.balance}}</td>
+                </tr>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

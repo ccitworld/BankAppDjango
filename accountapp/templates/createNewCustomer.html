@@ -1,0 +1,30 @@
+{% load django_bootstrap5 %}
+{% load static %}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <h1 class="bg-light text-center p-2 shadow-sm">
+      <img src="{% static 'bankimages/bank.png' %}" height="60">  Bank
+    </h1>
+    <div class="container">
+        {% bootstrap_messages %}
+        <div class="border w-50 mx-auto p-3 mt-3">
+            <img  src="{% static 'bankimages/loginimage.png' %}" height="100" class="d-block mx-auto">
+            <h2>Customer Detials Form</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                {% bootstrap_form NewCustomerForm %}
+                <label>Password</label>
+                <input type="password"  name="password" class="form-control mb-3">
+                <input type="submit" class="btn btn-primary w-100">
+            </form>
+            <a href="{% url 'index' %}" class="btn btn-outline-primary w-100">Login</a>
+        </div>
+    </div>
+</body>
+</html>

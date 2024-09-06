@@ -1,0 +1,35 @@
+{% extends 'dashboard.html' %}
+{% load django_bootstrap5 %}
+
+{% block 'maincontainer' %}
+    {% bootstrap_messages %}
+    <div class="w-75 border shadow-sm rounded mt-5 p-3 mx-auto">
+        <h3>Deposite Amount</h3>
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+        <div class="row">
+            <div class="col-3 text-center fw-bold h5">Account No: </div>
+            <div class="col">
+                <select class="form-select" name="accno">
+                    {% for item in accountActiveList %}
+                        <option>{{item.accno}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-3 text-center fw-bold h5">Amount: </div>
+            <div class="col">
+                <input type="number" name="amount" class="form-control">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-3"></div>
+            <div class=col>
+                <div class="col"><button type="submit" class="btn btn-primary w-75">Deposit</button></div>
+            </div>
+        </div>
+        </form>
+    </div>
+{% endblock %}

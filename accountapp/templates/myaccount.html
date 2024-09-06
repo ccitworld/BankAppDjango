@@ -1,0 +1,25 @@
+{% extends 'dashboard.html' %}
+{% load django_bootstrap5 %}
+{% block 'maincontainer' %}
+<h3 class="mt-5 text-center">My Accounts</h3>
+<table class="table table-bordered mt-3">
+    <tr>
+        <th>Account No.</th>
+        <th>Account Type</th>
+        <th>Account Owners</th>
+        <th>Account Status</th>
+    </tr>
+    {% for item in accountList %}
+        <tr>
+            <td>{{item.accno}}</td>
+            <td>{{item.account_type}}</td>
+            <td>{{item.account_owner}}</td>
+            {% if item.account_status is True %}
+                <td><span class="bg-success text-light px-3 rounded-pill">Active</span></td>
+            {% else %}
+                <td><span class="bg-danger text-light px-3 rounded-pill">Deactive</span></td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
